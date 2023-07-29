@@ -8,10 +8,10 @@ import { BeerCard } from "widgets";
 
 export const BeerList = () => {
   const [beers, setBeers] = React.useState<Beer[]>([]);
-  const [page, setPage] = React.useState(1);
+  const [page, setPage] = React.useState(0);
   const [loading, setLoading] = React.useState(true);
 
-  const onScrollTrigger = React.useCallback(async () => {
+  const onScrollTrigger = React.useCallback(() => {
     setPage((prev) => prev + 1);
   }, []);
 
