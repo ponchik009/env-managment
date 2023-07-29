@@ -8,7 +8,8 @@ import { BeerCard } from "widgets";
 
 export const BeerList = () => {
   const [beers, setBeers] = React.useState<Beer[]>([]);
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = React.useState(1);
+  const [loading, setLoading] = React.useState(true);
 
   const onScrollTrigger = React.useCallback(async () => {
     setPage((prev) => prev + 1);
@@ -16,14 +17,16 @@ export const BeerList = () => {
 
   React.useEffect(() => {
     if (page >= 1) {
+      setLoading(true);
       beerApi
         .getBeers(page)
-        .then((beers) => setBeers((prev) => [...prev, ...beers]));
+        .then((beers) => setBeers((prev) => [...prev, ...beers]))
+        .finally(() => setLoading(false));
     }
   }, [page]);
 
   return (
-    <InfiniteList callback={onScrollTrigger}>
+    <InfiniteList callback={onScrollTrigger} loading={loading}>
       <CardList>
         {beers.map((beer) => (
           <BeerCard beer={beer} key={beer.id} />
