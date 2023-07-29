@@ -1,0 +1,8 @@
+.InfiniteList {
+  display: flex;
+  flex-direction: column;
+}
+
+.Down {
+  height: 20px;
+}

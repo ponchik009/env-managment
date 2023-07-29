@@ -1,0 +1,19 @@
+.CardList {
+  /* columns: 4;
+  column-gap: 16px; */
+
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+}
+
+.CardList > * {
+  width: 20%;
+  /* break-inside: avoid; */
+  /* margin-bottom: 16px; */
+}
